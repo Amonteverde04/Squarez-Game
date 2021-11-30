@@ -1,0 +1,106 @@
+body {
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+
+/*  Menu  */
+h1 {
+  padding-top: 20px;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+p {
+  text-align: center;
+}
+
+#start,
+#instructions,
+#settings,
+#git {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+#start:active,
+#instructions:active,
+#settings:active,
+#git:active {
+  background: radial-gradient(
+    circle,
+    rgba(130, 227, 255, 0.648062015503876) 0%,
+    rgba(124, 226, 255, 0.8651162790697674) 100%
+  );
+  color: white;
+  border-color: pink;
+  border-width: 3px;
+}
+
+.menuContainer {
+  position: absolute;
+  width: 50%;
+  height: 70vh;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 10%;
+  z-index: 10;
+  overflow: scroll;
+}
+
+.menu {
+  background-color: black;
+  color: white;
+  opacity: 70%;
+  width: 50vw;
+  min-height: 70vh;
+  border-radius: 10%;
+}
+
+/*  Grid  */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(9, 10%);
+  grid-column-gap: 5px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  max-height: auto;
+}
+
+#btn {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  opacity: 10%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+#btn:active {
+  background: radial-gradient(
+    circle,
+    rgba(130, 227, 255, 0.648062015503876) 0%,
+    rgba(124, 226, 255, 0.8651162790697674) 100%
+  );
+  opacity: 50%;
+}
+
+/*  Hidden Effect  */
+.hidden {
+  display: none;
+}
