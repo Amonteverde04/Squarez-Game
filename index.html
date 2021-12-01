@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="menuContainer">
-      <div class="menu">
+      <div class="menu menu--0">
         <h1>Welcome!</h1>
         <p>Choose an option:</p>
         <button type="button" id="start">Start Game</button>
@@ -19,6 +19,25 @@
           rel="noopener noreferrer"
           ><button type="button" id="git">GitHub</button></a
         >
+      </div>
+      <div class="instructionsWindow menu--1 hidden">
+        <div class="instructionsContainer">
+          <h2>The game is simple.</h2>
+          <p>A box will light up on the grid.</p>
+          <p>Click on it within the time frame provided to continue.</p>
+          <p>
+            Click the wrong one or wait too long, you lose! How many can you
+            click?
+          </p>
+          <button type="button" id="returnBtn1">Main Menu</button>
+        </div>
+      </div>
+      <div class="settingsWindow menu--2 hidden">
+        <div class="settingsContainer">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatem mollitia tenetur deserunt, repellendus laudantium, similique eaque voluptas iure a quibusdam veritatis! Numquam vel nam dicta dolorem? Quaerat, officia cumque?</p>
+          <button type="button" id="returnBtn2">Main Menu</button>
+        </div>
+        </div>
       </div>
     </div>
     <div class="gridContainer">
@@ -266,5 +285,6 @@
         <button type="button" id="btn"></button>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

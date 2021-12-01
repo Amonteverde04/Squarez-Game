@@ -14,6 +14,11 @@ h1 {
   margin-bottom: auto;
 }
 
+h2 {
+  padding-top: 25px;
+  text-align: center;
+}
+
 p {
   text-align: center;
 }
@@ -35,7 +40,8 @@ p {
 #start:active,
 #instructions:active,
 #settings:active,
-#git:active {
+#git:active,
+#returnBtn:active {
   background: radial-gradient(
     circle,
     rgba(130, 227, 255, 0.648062015503876) 0%,
@@ -48,7 +54,7 @@ p {
 
 .menuContainer {
   position: absolute;
-  width: 50%;
+  width: 30vw;
   height: 70vh;
   left: 0;
   right: 0;
@@ -63,10 +69,57 @@ p {
 .menu {
   background-color: black;
   color: white;
+  margin-left: auto;
+  margin-right: auto;
   opacity: 70%;
-  width: 50vw;
-  min-height: 70vh;
+  width: 30vw;
+  min-height: 68vh;
   border-radius: 10%;
+}
+
+.instructionsWindow {
+  background-color: black;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 70%;
+  width: 30vw;
+  min-height: 60vh;
+  border-radius: 10%;
+}
+
+.instructionsContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.settingsWindow {
+  background-color: black;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 70%;
+  width: 30vw;
+  min-height: 60vh;
+  border-radius: 10%;
+}
+
+.settingsContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+#returnBtn1,
+#returnBtn2 {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 150px;
+  height: 30px;
+  border-radius: 20px;
 }
 
 /*  Grid  */
