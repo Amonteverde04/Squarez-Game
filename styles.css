@@ -111,6 +111,15 @@ p {
   width: 80%;
 }
 
+#blckNWhiteMode {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+}
+
 #returnBtn1,
 #returnBtn2 {
   display: block;
@@ -133,7 +142,7 @@ p {
   max-height: auto;
 }
 
-#btn {
+.btn {
   width: 100%;
   height: 50px;
   background-color: black;
