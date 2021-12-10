@@ -168,6 +168,7 @@ p {
 }
 
 .active {
-  background-color: #ffabab;
+  /*  !important will stop the black n white mode from affecting button color when playing game.*/
+  background-color: #ffabab !important;
   opacity: 100%;
 }
