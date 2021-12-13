@@ -26,7 +26,8 @@ p {
 #start,
 #instructions,
 #settings,
-#git {
+#git,
+#reset {
   display: block;
   position: relative;
   margin-left: auto;
@@ -41,7 +42,8 @@ p {
 #instructions:active,
 #settings:active,
 #git:active,
-#returnBtn:active {
+#returnBtn:active,
+#reset:active {
   background: radial-gradient(
     circle,
     rgba(130, 227, 255, 0.648062015503876) 0%,
@@ -111,6 +113,24 @@ p {
   width: 80%;
 }
 
+.resetWindow {
+  background-color: black;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 70%;
+  width: 30vw;
+  min-height: 50vh;
+  border-radius: 10%;
+}
+
+.resetContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  padding-top: 15%;
+}
+
 #blckNWhiteMode {
   display: block;
   margin-right: auto;
@@ -134,12 +154,15 @@ p {
 /*  Grid  */
 .gridContainer {
   display: grid;
+  margin-left: auto;
+  margin-right: auto;
   grid-template-columns: repeat(9, 10%);
   grid-column-gap: 5px;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   max-height: auto;
+  width: 70%;
 }
 
 .btn {

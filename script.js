@@ -6,11 +6,13 @@ const startMenu = document.querySelector(".menu");
 const bckgrnd = document.querySelector("body");
 const instructWindow = document.querySelector(".instructionsWindow");
 const settingsWindow = document.querySelector(".settingsWindow");
+const resetWindow = document.querySelector(".resetWindow");
 
 // all of the buttons
 const startBtn = document.getElementById("start");
 const instructionsBtn = document.getElementById("instructions");
 const settingsBtn = document.getElementById("settings");
+const resetBtn = document.getElementById("reset");
 const returnBtn1 = document.getElementById("returnBtn1");
 const returnBtn2 = document.getElementById("returnBtn2");
 const blckNWhiteBtn = document.getElementById("blckNWhiteMode");
@@ -36,37 +38,106 @@ const settingsMenu = function () {
   menuSelector = 2;
 };
 
+// makes reset button available on loss
+const resetMenu = function () {
+  menuContainer.classList.toggle("hidden");
+  startMenu.classList.toggle("hidden");
+  resetWindow.classList.toggle("hidden");
+  menuSelector = 3;
+};
+
+// turns main menu back on and hides any other active menu
+const mainMenu = function () {
+  startMenu.classList.toggle("hidden");
+  document.querySelector(`.menu--${menuSelector}`).classList.toggle("hidden");
+};
+
 // generates random button to light up and become "active"
 const buttonGen = function () {
-  let randomSquareSelector = Math.floor(Math.random() * 82);
+  let randomSquareSelector = Math.floor(Math.random() * 81);
+  while (randomSquareSelector === holder) {
+    randomSquareSelector = Math.floor(Math.random() * 81);
+  }
   holder = randomSquareSelector;
-  gridBtn[randomSquareSelector].classList.toggle("active");
+  gridBtn[holder].classList.toggle("active");
 };
 
 // starts the game
-const game = function () {
+const startGame = function () {
   menuContainer.classList.toggle("hidden");
-  buttonGen();
+  gameLoop();
 };
 
-// resets all the tiles
-const reset = function () {
+// loop for game
+const gameLoop = function () {
+  buttonGen();
+  for (let i = 0; i < 81; i++) {
+    console.log(`Button ${i}: ${gridBtn[i].textContent}`);
+    if (i === holder) {
+      gridBtn[holder].addEventListener("click", buttonSwap);
+    } else {
+      gridBtn[i].addEventListener("click", buttonKill);
+    }
+  }
+};
+
+// removes the event listeners to prevent event listener interference when switching active button
+const resetGrid = function () {
+  for (let i = 0; i < 81; i++) {
+    if (i === holder) {
+      gridBtn[holder].removeEventListener("click", buttonSwap);
+    } else {
+      gridBtn[i].removeEventListener("click", buttonKill);
+    }
+  }
+};
+
+// resets to main menu
+const resetGame = function () {
   const gridButtons = document.getElementsByClassName("btn active");
   let i = 0;
   while (i < gridButtons.length) {
     gridButtons[i].classList.remove("active");
   }
+  if (blckNWhite === true) {
+    for (let i = 0; i < 81; i++) {
+      gridBtn[i].style.backgroundColor = "white";
+    }
+  }
+  if (blckNWhite === false) {
+    for (let i = 0; i < 81; i++) {
+      gridBtn[i].style.backgroundColor = "black";
+    }
+  }
+  mainMenu();
+};
+
+const buttonKill = function () {
+  resetGrid();
+  gridBtn[holder].classList.toggle("active");
+
+  let interval = setInterval(frame, 10);
+  let i = 0;
+
+  function frame() {
+    if (i === 81) {
+      clearInterval(interval);
+      return;
+    } else {
+      gridBtn[i].style.backgroundColor = "red";
+      i++;
+    }
+  }
+  setTimeout(() => {
+    resetMenu();
+  }, 1200);
 };
 
 // swaps buttons when clicked
 const buttonSwap = function () {
   gridBtn[holder].classList.toggle("active");
-  let randomSquareSelector = Math.floor(Math.random() * 82);
-  while (randomSquareSelector === holder) {
-    randomSquareSelector = Math.floor(Math.random() * 82);
-  }
-  holder = randomSquareSelector;
-  gridBtn[randomSquareSelector].classList.toggle("active");
+  resetGrid();
+  gameLoop();
 };
 
 // black and white setting logic
@@ -101,18 +172,10 @@ const blckNWhiteMode = function () {
   }
 };
 
-const mainMenu = function () {
-  startMenu.classList.toggle("hidden");
-  document.querySelector(`.menu--${menuSelector}`).classList.toggle("hidden");
-};
-
 instructionsBtn.addEventListener("click", instructionsMenu);
 settingsBtn.addEventListener("click", settingsMenu);
 returnBtn1.addEventListener("click", mainMenu);
 returnBtn2.addEventListener("click", mainMenu);
 blckNWhiteBtn.addEventListener("click", blckNWhiteMode);
-startBtn.addEventListener("click", game);
-
-for (let i = 0; i < 81; i++) {
-  gridBtn[i].addEventListener("click", buttonSwap);
-}
+startBtn.addEventListener("click", startGame);
+resetBtn.addEventListener("click", resetGame);
