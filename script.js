@@ -7,6 +7,12 @@ const bckgrnd = document.querySelector("body");
 const instructWindow = document.querySelector(".instructionsWindow");
 const settingsWindow = document.querySelector(".settingsWindow");
 const resetWindow = document.querySelector(".resetWindow");
+const scoreWindow = document.querySelector(".scoreWindow");
+const scoreHighlight = document.getElementById("scoreTitle");
+const scoreTag = document.getElementById("scoreTag");
+const timerWindow = document.querySelector(".timerWindow");
+const timerHighlight = document.getElementById("timerTitle");
+const timerTag = document.getElementById("timerTag");
 
 // all of the buttons
 const startBtn = document.getElementById("start");
@@ -23,6 +29,7 @@ let menuSelector = 0;
 let blckNWhite = false;
 // will hold the old random grid item
 let holder;
+let score = document.getElementById("scoreTag").textContent;
 
 // turns instructions menu on and off
 const instructionsMenu = function () {
@@ -52,6 +59,26 @@ const mainMenu = function () {
   document.querySelector(`.menu--${menuSelector}`).classList.toggle("hidden");
 };
 
+// starts the game
+const startGame = function () {
+  menuContainer.classList.toggle("hidden");
+  scoreWindow.classList.toggle("hidden");
+  timerWindow.classList.toggle("hidden");
+  gameLoop();
+};
+
+// loop for game
+const gameLoop = function () {
+  buttonGen();
+  for (let i = 0; i < 81; i++) {
+    if (i === holder) {
+      gridBtn[holder].addEventListener("click", buttonSwap);
+    } else {
+      gridBtn[i].addEventListener("click", buttonKill);
+    }
+  }
+};
+
 // generates random button to light up and become "active"
 const buttonGen = function () {
   let randomSquareSelector = Math.floor(Math.random() * 81);
@@ -62,23 +89,35 @@ const buttonGen = function () {
   gridBtn[holder].classList.toggle("active");
 };
 
-// starts the game
-const startGame = function () {
-  menuContainer.classList.toggle("hidden");
+// swaps buttons when clicked
+const buttonSwap = function () {
+  gridBtn[holder].classList.toggle("active");
+  score = Number(score) + 1;
+  document.getElementById("scoreTag").textContent = score;
+  resetGrid();
   gameLoop();
 };
 
-// loop for game
-const gameLoop = function () {
-  buttonGen();
-  for (let i = 0; i < 81; i++) {
-    console.log(`Button ${i}: ${gridBtn[i].textContent}`);
-    if (i === holder) {
-      gridBtn[holder].addEventListener("click", buttonSwap);
+// stops the game when the wrong button is clicked
+const buttonKill = function () {
+  resetGrid();
+  gridBtn[holder].classList.toggle("active");
+
+  let interval = setInterval(frame, 10);
+  let i = 0;
+
+  function frame() {
+    if (i === 81) {
+      clearInterval(interval);
+      return;
     } else {
-      gridBtn[i].addEventListener("click", buttonKill);
+      gridBtn[i].style.backgroundColor = "red";
+      i++;
     }
   }
+  setTimeout(() => {
+    resetMenu();
+  }, 1200);
 };
 
 // removes the event listeners to prevent event listener interference when switching active button
@@ -109,35 +148,11 @@ const resetGame = function () {
       gridBtn[i].style.backgroundColor = "black";
     }
   }
+  score = 0;
+  document.getElementById("scoreTag").textContent = score;
+  scoreWindow.classList.toggle("hidden");
+  timerWindow.classList.toggle("hidden");
   mainMenu();
-};
-
-const buttonKill = function () {
-  resetGrid();
-  gridBtn[holder].classList.toggle("active");
-
-  let interval = setInterval(frame, 10);
-  let i = 0;
-
-  function frame() {
-    if (i === 81) {
-      clearInterval(interval);
-      return;
-    } else {
-      gridBtn[i].style.backgroundColor = "red";
-      i++;
-    }
-  }
-  setTimeout(() => {
-    resetMenu();
-  }, 1200);
-};
-
-// swaps buttons when clicked
-const buttonSwap = function () {
-  gridBtn[holder].classList.toggle("active");
-  resetGrid();
-  gameLoop();
 };
 
 // black and white setting logic
@@ -151,6 +166,14 @@ const blckNWhiteMode = function () {
     instructWindow.style.color = "black";
     startMenu.style.backgroundColor = "white";
     startMenu.style.color = "black";
+    scoreWindow.style.backgroundColor = "white";
+    scoreWindow.style.color = "white";
+    scoreHighlight.style.background = "black";
+    scoreTag.style.color = "black";
+    timerWindow.style.backgroundColor = "white";
+    timerWindow.style.color = "white";
+    timerHighlight.style.background = "black";
+    timerTag.style.color = "black";
     for (let i = 0; i < 81; i++) {
       gridBtn[i].style.backgroundColor = "white";
     }
@@ -166,6 +189,14 @@ const blckNWhiteMode = function () {
     instructWindow.style.color = "white";
     startMenu.style.backgroundColor = "black";
     startMenu.style.color = "white";
+    scoreWindow.style.backgroundColor = "black";
+    scoreWindow.style.color = "black";
+    scoreHighlight.style.background = "white";
+    scoreTag.style.color = "white";
+    timerWindow.style.backgroundColor = "black";
+    timerWindow.style.color = "black";
+    timerHighlight.style.background = "white";
+    timerTag.style.color = "white";
     for (let i = 0; i < 81; i++) {
       gridBtn[i].style.backgroundColor = "black";
     }
