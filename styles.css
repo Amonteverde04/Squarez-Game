@@ -19,6 +19,10 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  text-align: center;
+}
+
 p {
   text-align: center;
 }
@@ -43,7 +47,14 @@ p {
 #settings:active,
 #git:active,
 #returnBtn:active,
-#reset:active {
+#reset:active,
+#blckNWhiteMode:active,
+#easyBtn:active,
+#mediumBtn:active,
+#hardBtn:active,
+#marathonBtn:active,
+#returnBtn1:active,
+#returnBtn2:active {
   background: radial-gradient(
     circle,
     rgba(130, 227, 255, 0.648062015503876) 0%,
@@ -57,7 +68,7 @@ p {
 .menuContainer {
   position: absolute;
   width: 30vw;
-  height: 50vh;
+  height: 70vh;
   left: 0;
   right: 0;
   top: 0;
@@ -155,8 +166,21 @@ p {
   width: 12%;
 }
 
+.difficultyWindow {
+  position: absolute;
+  top: 8%;
+  right: 3%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: black;
+  opacity: 70%;
+  border-radius: 20%;
+  width: 12%;
+}
+
 #scoreTitle,
-#timerTitle {
+#timerTitle,
+#difficultyTitle {
   margin-left: auto;
   margin-right: auto;
   background-color: white;
@@ -164,14 +188,28 @@ p {
 }
 
 #scoreTag,
-#timerTag {
+#timerTag,
+#difficultyTag {
   color: white;
 }
 
-#blckNWhiteMode {
+#blckNWhiteMode,
+#easyBtn,
+#mediumBtn,
+#hardBtn,
+#marathonBtn {
   display: block;
   margin-right: auto;
   margin-left: auto;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+}
+
+#easyBtn,
+#mediumBtn,
+#hardBtn,
+#marathonBtn {
   width: 25px;
   height: 25px;
   border-radius: 100%;
@@ -186,6 +224,7 @@ p {
   max-width: 150px;
   height: 30px;
   border-radius: 20px;
+  margin-top: 20px;
 }
 
 /*  Grid  */

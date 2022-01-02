@@ -13,6 +13,9 @@ const scoreTag = document.getElementById("scoreTag");
 const timerWindow = document.querySelector(".timerWindow");
 const timerHighlight = document.getElementById("timerTitle");
 const timerTag = document.getElementById("timerTag");
+const difficultyWindow = document.querySelector(".difficultyWindow");
+const difficultyHighlight = document.getElementById("difficultyTitle");
+const difficultyTag = document.getElementById("difficultyTag");
 
 // all of the buttons
 const startBtn = document.getElementById("start");
@@ -22,14 +25,25 @@ const resetBtn = document.getElementById("reset");
 const returnBtn1 = document.getElementById("returnBtn1");
 const returnBtn2 = document.getElementById("returnBtn2");
 const blckNWhiteBtn = document.getElementById("blckNWhiteMode");
+const easyBtn = document.getElementById("easyBtn");
+const mediumBtn = document.getElementById("mediumBtn");
+const hardBtn = document.getElementById("hardBtn");
+const marathonBtn = document.getElementById("marathonBtn");
 const gridBtn = document.querySelectorAll(".btn");
 
 // global variables
 let menuSelector = 0;
+let difficulty = 0;
 let blckNWhite = false;
 // will hold the old random grid item
 let holder;
 let score = document.getElementById("scoreTag").textContent;
+// timer will be a set time out
+let timer;
+// time will determine available time in the timer
+let time;
+// automatically on "easy"
+let timeInterval = 500;
 
 // turns instructions menu on and off
 const instructionsMenu = function () {
@@ -64,12 +78,46 @@ const startGame = function () {
   menuContainer.classList.toggle("hidden");
   scoreWindow.classList.toggle("hidden");
   timerWindow.classList.toggle("hidden");
+  difficultyWindow.classList.toggle("hidden");
+  if (difficulty === 0) {
+    difficultyTag.textContent = `Easy`;
+  }
   gameLoop();
+};
+
+// timer logic
+const setTimer = function () {
+  time = 10000;
+  timerTag.textContent = `${time / 1000}`;
+  timer = setInterval(changeTime, timeInterval);
+};
+
+const changeInterval = function () {
+  if (Number(score) >= 15 && Number(score) < 20) {
+    timeInterval = 250;
+  } else if (Number(score) >= 20 && Number(score) < 45) {
+    timeInterval = 100;
+  } else if (Number(score) >= 45) {
+    timeInterval = 50;
+  }
+};
+// every "timeInterval" milliseconds, the timer will update the timer
+const changeTime = function () {
+  if (time === 0) {
+    buttonKill();
+  } else {
+    time = time - 1000;
+    timerTag.textContent = `${time / 1000}`;
+  }
 };
 
 // loop for game
 const gameLoop = function () {
   buttonGen();
+  if (difficulty === 3) {
+    changeInterval();
+  }
+  setTimer();
   for (let i = 0; i < 81; i++) {
     if (i === holder) {
       gridBtn[holder].addEventListener("click", buttonSwap);
@@ -94,6 +142,7 @@ const buttonSwap = function () {
   gridBtn[holder].classList.toggle("active");
   score = Number(score) + 1;
   document.getElementById("scoreTag").textContent = score;
+  clearInterval(timer);
   resetGrid();
   gameLoop();
 };
@@ -102,6 +151,7 @@ const buttonSwap = function () {
 const buttonKill = function () {
   resetGrid();
   gridBtn[holder].classList.toggle("active");
+  clearInterval(timer);
 
   let interval = setInterval(frame, 10);
   let i = 0;
@@ -152,6 +202,7 @@ const resetGame = function () {
   document.getElementById("scoreTag").textContent = score;
   scoreWindow.classList.toggle("hidden");
   timerWindow.classList.toggle("hidden");
+  difficultyWindow.classList.toggle("hidden");
   mainMenu();
 };
 
@@ -174,6 +225,10 @@ const blckNWhiteMode = function () {
     timerWindow.style.color = "white";
     timerHighlight.style.background = "black";
     timerTag.style.color = "black";
+    difficultyWindow.style.backgroundColor = "white";
+    difficultyWindow.style.color = "white";
+    difficultyHighlight.style.background = "black";
+    difficultyTag.style.color = "black";
     for (let i = 0; i < 81; i++) {
       gridBtn[i].style.backgroundColor = "white";
     }
@@ -197,9 +252,46 @@ const blckNWhiteMode = function () {
     timerWindow.style.color = "black";
     timerHighlight.style.background = "white";
     timerTag.style.color = "white";
+    difficultyWindow.style.backgroundColor = "black";
+    difficultyWindow.style.color = "black";
+    difficultyHighlight.style.background = "white";
+    difficultyTag.style.color = "white";
     for (let i = 0; i < 81; i++) {
       gridBtn[i].style.backgroundColor = "black";
     }
+  }
+};
+
+const difficultyUpdate = function (num) {
+  setDifficulty(num);
+};
+
+const setDifficulty = function () {
+  switch (difficulty) {
+    case 0:
+      timeInterval = 500;
+      difficultyTag.textContent = `Easy`;
+      mainMenu();
+      console.log(timeInterval);
+      break;
+    case 1:
+      timeInterval = 250;
+      difficultyTag.textContent = `Medium`;
+      mainMenu();
+      console.log(timeInterval);
+      break;
+    case 2:
+      timeInterval = 100;
+      difficultyTag.textContent = `Hard`;
+      mainMenu();
+      console.log(timeInterval);
+      break;
+    case 3:
+      timeInterval = 500;
+      difficultyTag.textContent = `Marathon`;
+      mainMenu();
+      console.log(timeInterval);
+      break;
   }
 };
 
@@ -210,3 +302,19 @@ returnBtn2.addEventListener("click", mainMenu);
 blckNWhiteBtn.addEventListener("click", blckNWhiteMode);
 startBtn.addEventListener("click", startGame);
 resetBtn.addEventListener("click", resetGame);
+easyBtn.addEventListener("click", function () {
+  difficulty = 0;
+  difficultyUpdate(difficulty);
+});
+mediumBtn.addEventListener("click", function () {
+  difficulty = 1;
+  difficultyUpdate(difficulty);
+});
+hardBtn.addEventListener("click", function () {
+  difficulty = 2;
+  difficultyUpdate(difficulty);
+});
+marathonBtn.addEventListener("click", function () {
+  difficulty = 3;
+  difficultyUpdate(difficulty);
+});
