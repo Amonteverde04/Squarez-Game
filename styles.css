@@ -272,53 +272,70 @@ p {
   opacity: 100%;
 }
 
-/* smallest screens */
-@media only screen and (max-device-width: 640px) {
+/*tiny phones*/
+@media (min-width: 300px) and (max-width: 458.98px) {
   h1 {
-    padding-top: 20px;
+    padding-top: 25px;
     text-align: center;
     margin-top: auto;
     margin-bottom: auto;
-    font-size: 250%;
   }
 
   h2 {
     padding-top: 25px;
     text-align: center;
-    font-size: 250%;
+  }
+
+  h3 {
+    text-align: center;
   }
 
   p {
     text-align: center;
-    font-size: 175%;
   }
 
   #start,
   #instructions,
   #settings,
   #git,
-  #reset,
-  #returnBtn1,
-  #returnBtn2 {
+  #reset {
     display: block;
     position: relative;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    width: 150px;
-    height: 50px;
+    width: 100px;
+    height: 30px;
     border-radius: 20px;
-    font-size: x-large;
   }
 
-  #blckNWhiteMode {
-    width: 50px;
-    height: 50px;
+  #start:active,
+  #instructions:active,
+  #settings:active,
+  #git:active,
+  #returnBtn:active,
+  #reset:active,
+  #blckNWhiteMode:active,
+  #easyBtn:active,
+  #mediumBtn:active,
+  #hardBtn:active,
+  #marathonBtn:active,
+  #returnBtn1:active,
+  #returnBtn2:active {
+    background: radial-gradient(
+      circle,
+      rgba(130, 227, 255, 0.648062015503876) 0%,
+      rgba(124, 226, 255, 0.8651162790697674) 100%
+    );
+    color: white;
+    border-color: pink;
+    border-width: 3px;
   }
 
   .menuContainer {
     position: absolute;
-    height: 50vh;
+    width: 50vw;
+    height: 100vh;
     left: 0;
     right: 0;
     top: 0;
@@ -332,23 +349,24 @@ p {
   .menu {
     background-color: black;
     color: white;
-    padding-top: 50%;
+    margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
     opacity: 70%;
-    width: 30vw;
-    min-height: 68vh;
+    width: 50vw;
+    min-height: 96vh;
     border-radius: 10%;
   }
 
   .instructionsWindow {
     background-color: black;
     color: white;
+    margin-top: 75px;
     margin-left: auto;
     margin-right: auto;
     opacity: 70%;
-    width: 30vw;
-    min-height: 40vh;
+    width: 40vw;
+    min-height: 75vh;
     border-radius: 10%;
   }
 
@@ -358,18 +376,14 @@ p {
     width: 80%;
   }
 
-  .instructionTextContainer {
-    padding-top: 5%;
-  }
-
   .settingsWindow {
     background-color: black;
     color: white;
     margin-left: auto;
     margin-right: auto;
     opacity: 70%;
-    width: 30vw;
-    min-height: 60vh;
+    width: 40vw;
+    min-height: 100vh;
     border-radius: 10%;
   }
 
@@ -382,11 +396,12 @@ p {
   .resetWindow {
     background-color: black;
     color: white;
+    margin-top: 125px;
     margin-left: auto;
     margin-right: auto;
     opacity: 70%;
-    width: 30vw;
-    min-height: 25vh;
+    width: 50vw;
+    min-height: 50vh;
     border-radius: 10%;
   }
 
@@ -394,17 +409,905 @@ p {
     margin-left: auto;
     margin-right: auto;
     width: 70%;
-    padding-top: 40%;
+    padding-top: 15%;
+  }
+
+  .scoreWindow {
+    position: absolute;
+    top: 8%;
+    left: 0.2%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 13%;
+  }
+
+  .timerWindow {
+    position: absolute;
+    top: 27%;
+    left: 0.2%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 13%;
+  }
+
+  .difficultyWindow {
+    position: absolute;
+    top: 8%;
+    right: 0.2%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 13%;
+  }
+
+  #scoreTitle,
+  #timerTitle,
+  #difficultyTitle {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 90%;
+  }
+
+  #scoreTag,
+  #timerTag,
+  #difficultyTag {
+    color: white;
+  }
+
+  #blckNWhiteMode,
+  #easyBtn,
+  #mediumBtn,
+  #hardBtn,
+  #marathonBtn {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+  }
+
+  #easyBtn,
+  #mediumBtn,
+  #hardBtn,
+  #marathonBtn {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+  }
+
+  #returnBtn1,
+  #returnBtn2 {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+
+  /*  Grid  */
+  .gridContainer {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(9, 10%);
+    grid-column-gap: 5px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-height: auto;
+    width: 70%;
   }
 
   .btn {
     width: 100%;
-    height: 120px;
+    height: 50px;
     background-color: black;
     opacity: 10%;
     border-style: solid;
     border-width: 2px;
     border-color: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
+  }
+
+  #btn:active {
+    background: radial-gradient(
+      circle,
+      rgba(130, 227, 255, 0.648062015503876) 0%,
+      rgba(124, 226, 255, 0.8651162790697674) 100%
+    );
+    opacity: 50%;
+  }
+}
+
+/* smallest screens */
+@media (min-width: 460px) and (max-width: 575.98px) {
+  h1 {
+    padding-top: 25px;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  h2 {
+    padding-top: 25px;
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  #start,
+  #instructions,
+  #settings,
+  #git,
+  #reset {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+  }
+
+  #start:active,
+  #instructions:active,
+  #settings:active,
+  #git:active,
+  #returnBtn:active,
+  #reset:active,
+  #blckNWhiteMode:active,
+  #easyBtn:active,
+  #mediumBtn:active,
+  #hardBtn:active,
+  #marathonBtn:active,
+  #returnBtn1:active,
+  #returnBtn2:active {
+    background: radial-gradient(
+      circle,
+      rgba(130, 227, 255, 0.648062015503876) 0%,
+      rgba(124, 226, 255, 0.8651162790697674) 100%
+    );
+    color: white;
+    border-color: pink;
+    border-width: 3px;
+  }
+
+  .menuContainer {
+    position: absolute;
+    width: 30vw;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 10%;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .menu {
+    background-color: black;
+    color: white;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 96vh;
+    border-radius: 10%;
+  }
+
+  .instructionsWindow {
+    background-color: black;
+    color: white;
+    margin-top: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 75vh;
+    border-radius: 10%;
+  }
+
+  .instructionsContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
+  .settingsWindow {
+    background-color: black;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 100vh;
+    border-radius: 10%;
+  }
+
+  .settingsContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
+  .resetWindow {
+    background-color: black;
+    color: white;
+    margin-top: 125px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 50vh;
+    border-radius: 10%;
+  }
+
+  .resetContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    padding-top: 15%;
+  }
+
+  .scoreWindow {
+    position: absolute;
+    top: 8%;
+    left: 2%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 10%;
+  }
+
+  .timerWindow {
+    position: absolute;
+    top: 27%;
+    left: 2%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 10%;
+  }
+
+  .difficultyWindow {
+    position: absolute;
+    top: 8%;
+    right: 5%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 10%;
+  }
+
+  #scoreTitle,
+  #timerTitle,
+  #difficultyTitle {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 90%;
+  }
+
+  #scoreTag,
+  #timerTag,
+  #difficultyTag {
+    color: white;
+  }
+
+  #blckNWhiteMode,
+  #easyBtn,
+  #mediumBtn,
+  #hardBtn,
+  #marathonBtn {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+  }
+
+  #easyBtn,
+  #mediumBtn,
+  #hardBtn,
+  #marathonBtn {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+  }
+
+  #returnBtn1,
+  #returnBtn2 {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+
+  /*  Grid  */
+  .gridContainer {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(9, 10%);
+    grid-column-gap: 5px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-height: auto;
+    width: 70%;
+  }
+
+  .btn {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    opacity: 10%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+
+  #btn:active {
+    background: radial-gradient(
+      circle,
+      rgba(130, 227, 255, 0.648062015503876) 0%,
+      rgba(124, 226, 255, 0.8651162790697674) 100%
+    );
+    opacity: 50%;
+  }
+}
+
+/* small screens */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  h1 {
+    padding-top: 25px;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  h2 {
+    padding-top: 25px;
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  #start,
+  #instructions,
+  #settings,
+  #git,
+  #reset {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+  }
+
+  #start:active,
+  #instructions:active,
+  #settings:active,
+  #git:active,
+  #returnBtn:active,
+  #reset:active,
+  #blckNWhiteMode:active,
+  #easyBtn:active,
+  #mediumBtn:active,
+  #hardBtn:active,
+  #marathonBtn:active,
+  #returnBtn1:active,
+  #returnBtn2:active {
+    background: radial-gradient(
+      circle,
+      rgba(130, 227, 255, 0.648062015503876) 0%,
+      rgba(124, 226, 255, 0.8651162790697674) 100%
+    );
+    color: white;
+    border-color: pink;
+    border-width: 3px;
+  }
+
+  .menuContainer {
+    position: absolute;
+    width: 30vw;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 10%;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .menu {
+    background-color: black;
+    color: white;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 96vh;
+    border-radius: 10%;
+  }
+
+  .instructionsWindow {
+    background-color: black;
+    color: white;
+    margin-top: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 75vh;
+    border-radius: 10%;
+  }
+
+  .instructionsContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
+  .settingsWindow {
+    background-color: black;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 100vh;
+    border-radius: 10%;
+  }
+
+  .settingsContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
+  .resetWindow {
+    background-color: black;
+    color: white;
+    margin-top: 125px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 50vh;
+    border-radius: 10%;
+  }
+
+  .resetContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    padding-top: 15%;
+  }
+
+  .scoreWindow {
+    position: absolute;
+    top: 8%;
+    left: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 15%;
+  }
+
+  .timerWindow {
+    position: absolute;
+    top: 27%;
+    left: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 15%;
+  }
+
+  .difficultyWindow {
+    position: absolute;
+    top: 8%;
+    right: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 15%;
+  }
+
+  #scoreTitle,
+  #timerTitle,
+  #difficultyTitle {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 90%;
+  }
+
+  #scoreTag,
+  #timerTag,
+  #difficultyTag {
+    color: white;
+  }
+
+  #blckNWhiteMode,
+  #easyBtn,
+  #mediumBtn,
+  #hardBtn,
+  #marathonBtn {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+  }
+
+  #easyBtn,
+  #mediumBtn,
+  #hardBtn,
+  #marathonBtn {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+  }
+
+  #returnBtn1,
+  #returnBtn2 {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+
+  /*  Grid  */
+  .gridContainer {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(9, 10%);
+    grid-column-gap: 5px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-height: auto;
+    width: 70%;
+  }
+
+  .btn {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    opacity: 10%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+
+  #btn:active {
+    background: radial-gradient(
+      circle,
+      rgba(130, 227, 255, 0.648062015503876) 0%,
+      rgba(124, 226, 255, 0.8651162790697674) 100%
+    );
+    opacity: 50%;
+  }
+}
+
+/* medium screens */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  h1 {
+    padding-top: 25px;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  h2 {
+    padding-top: 25px;
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  #start,
+  #instructions,
+  #settings,
+  #git,
+  #reset {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+  }
+
+  #start:active,
+  #instructions:active,
+  #settings:active,
+  #git:active,
+  #returnBtn:active,
+  #reset:active,
+  #blckNWhiteMode:active,
+  #easyBtn:active,
+  #mediumBtn:active,
+  #hardBtn:active,
+  #marathonBtn:active,
+  #returnBtn1:active,
+  #returnBtn2:active {
+    background: radial-gradient(
+      circle,
+      rgba(130, 227, 255, 0.648062015503876) 0%,
+      rgba(124, 226, 255, 0.8651162790697674) 100%
+    );
+    color: white;
+    border-color: pink;
+    border-width: 3px;
+  }
+
+  .menuContainer {
+    position: absolute;
+    width: 30vw;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 10%;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .menu {
+    background-color: black;
+    color: white;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 96vh;
+    border-radius: 10%;
+  }
+
+  .instructionsWindow {
+    background-color: black;
+    color: white;
+    margin-top: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 75vh;
+    border-radius: 10%;
+  }
+
+  .instructionsContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
+  .settingsWindow {
+    background-color: black;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 100vh;
+    border-radius: 10%;
+  }
+
+  .settingsContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
+  .resetWindow {
+    background-color: black;
+    color: white;
+    margin-top: 125px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 70%;
+    width: 30vw;
+    min-height: 50vh;
+    border-radius: 10%;
+  }
+
+  .resetContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    padding-top: 15%;
+  }
+
+  .scoreWindow {
+    position: absolute;
+    top: 8%;
+    left: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 15%;
+  }
+
+  .timerWindow {
+    position: absolute;
+    top: 27%;
+    left: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 15%;
+  }
+
+  .difficultyWindow {
+    position: absolute;
+    top: 8%;
+    right: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: black;
+    opacity: 70%;
+    border-radius: 20%;
+    width: 15%;
+  }
+
+  #scoreTitle,
+  #timerTitle,
+  #difficultyTitle {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 90%;
+  }
+
+  #scoreTag,
+  #timerTag,
+  #difficultyTag {
+    color: white;
+  }
+
+  #blckNWhiteMode,
+  #easyBtn,
+  #mediumBtn,
+  #hardBtn,
+  #marathonBtn {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+  }
+
+  #easyBtn,
+  #mediumBtn,
+  #hardBtn,
+  #marathonBtn {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+  }
+
+  #returnBtn1,
+  #returnBtn2 {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+
+  /*  Grid  */
+  .gridContainer {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(9, 10%);
+    grid-column-gap: 5px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-height: auto;
+    width: 70%;
+  }
+
+  .btn {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    opacity: 10%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+
+  #btn:active {
+    background: radial-gradient(
+      circle,
+      rgba(130, 227, 255, 0.648062015503876) 0%,
+      rgba(124, 226, 255, 0.8651162790697674) 100%
+    );
+    opacity: 50%;
   }
 }
