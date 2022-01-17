@@ -122,6 +122,23 @@ const gameLoop = function () {
     if (i === holder) {
       gridBtn[holder].addEventListener("click", buttonSwap);
     } else {
+      // mouse hold prevention
+      let mouseIsDown = false;
+      const preventMouseHold = function () {
+        mouseIsDown = true;
+        setTimeout(function () {
+          if (mouseIsDown) {
+            gridBtn[i].click();
+          }
+        }, 50);
+      };
+      // prevents bug where player can hold down a grid button
+      gridBtn[i].addEventListener("mousedown", preventMouseHold);
+      // resets mousedIsDown
+      gridBtn[i].addEventListener("mouseup", function () {
+        mouseIsDown = false;
+      });
+      // ends game after wrong click
       gridBtn[i].addEventListener("click", buttonKill);
     }
   }
