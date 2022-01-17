@@ -530,6 +530,17 @@ p {
     );
     opacity: 50%;
   }
+
+  /*  Hidden Effect  */
+  .hidden {
+    display: none;
+  }
+
+  .active {
+    /*  !important will stop the black n white mode from affecting button color when playing game.*/
+    background-color: #ffabab !important;
+    opacity: 100%;
+  }
 }
 
 /* smallest screens */
@@ -789,6 +800,17 @@ p {
       rgba(124, 226, 255, 0.8651162790697674) 100%
     );
     opacity: 50%;
+  }
+
+  /*  Hidden Effect  */
+  .hidden {
+    display: none;
+  }
+
+  .active {
+    /*  !important will stop the black n white mode from affecting button color when playing game.*/
+    background-color: #ffabab !important;
+    opacity: 100%;
   }
 }
 
@@ -1050,6 +1072,17 @@ p {
     );
     opacity: 50%;
   }
+
+  /*  Hidden Effect  */
+  .hidden {
+    display: none;
+  }
+
+  .active {
+    /*  !important will stop the black n white mode from affecting button color when playing game.*/
+    background-color: #ffabab !important;
+    opacity: 100%;
+  }
 }
 
 /* medium screens */
@@ -1309,5 +1342,16 @@ p {
       rgba(124, 226, 255, 0.8651162790697674) 100%
     );
     opacity: 50%;
+  }
+
+  /*  Hidden Effect  */
+  .hidden {
+    display: none;
+  }
+
+  .active {
+    /*  !important will stop the black n white mode from affecting button color when playing game.*/
+    background-color: #ffabab !important;
+    opacity: 100%;
   }
 }
