@@ -130,7 +130,7 @@ const gameLoop = function () {
           if (mouseIsDown) {
             gridBtn[i].click();
           }
-        }, 70);
+        }, 120);
       };
       // prevents bug where player can hold down a grid button
       gridBtn[i].addEventListener("mousedown", preventMouseHold);
